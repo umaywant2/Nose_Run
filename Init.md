@@ -1,0 +1,479 @@
+Here’s a clean, drop-in CSS upgrade that turns the current sparse page into a dark, high-energy entertainment playground while keeping your existing content.
+
+### How to use it
+1. Replace (or heavily update) the current inline styles.
+2. Add the CSS below in a `<style>` tag in the `<head>`, or as an external stylesheet.
+3. Wrap the page content in a simple structure (I included a minimal HTML skeleton at the bottom so everything just works).
+
+```css
+/* ═══════════════════════════════════════════════════════════════
+   Nose_Run Playground — Dark Cyber-Scrap Theme
+   For gamer/graphics shorts. No ads. Pure entertainment.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --rb-red: #e10600;
+  --rb-red-glow: #ff1a1a;
+  --bg-deep: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-elevated: #1a1a26;
+  --text-primary: #f0f0f5;
+  --text-secondary: #b0b0c0;
+  --accent-cyan: #00e5ff;
+  --accent-magenta: #ff00aa;
+  --border-glow: rgba(225, 6, 0, 0.45);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-display: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.55;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 6, 0, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 229, 255, 0.06), transparent);
+}
+
+/* ── Header / Logo ─────────────────────────────────────────── */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(225, 6, 0, 0.25);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff00aa, #00e5ff);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 0 18px rgba(255, 0, 170, 0.4);
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-text span {
+  color: var(--rb-red);
+}
+
+.logo-sub {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: -2px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Main Layout ───────────────────────────────────────────── */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .page {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+    gap: 2.5rem;
+    padding-top: 2rem;
+  }
+}
+
+/* ── Hero Video ────────────────────────────────────────────── */
+.hero-video {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(225, 6, 0, 0.35),
+    0 20px 50px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(225, 6, 0, 0.15);
+  aspect-ratio: 16 / 9;
+}
+
+.hero-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.hero-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Lore Card ─────────────────────────────────────────────── */
+.lore-card {
+  background: linear-gradient(160deg, var(--bg-card) 0%, #161622 100%);
+  border: 2px dashed var(--rb-red);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(225, 6, 0, 0.2),
+    0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.lore-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(225, 6, 0, 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.lore-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 800;
+  color: var(--rb-red);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(225, 6, 0, 0.35);
+}
+
+.lore-card p {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.lore-card p strong {
+  color: #fff;
+}
+
+.lore-card a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.lore-card a:hover {
+  color: #fff;
+  border-color: var(--accent-cyan);
+}
+
+.parts-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.25rem;
+  list-style: none;
+  margin: 1.25rem 0 1.5rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.parts-list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.parts-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--rb-red);
+  font-size: 0.8rem;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 0.35rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--rb-red);
+  opacity: 0.9;
+}
+
+/* ── Shorts Grid (ready for future clips) ──────────────────── */
+.shorts-section {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(225, 6, 0, 0.5), transparent);
+}
+
+.shorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.short-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+  cursor: pointer;
+}
+
+.short-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(225, 6, 0, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(225, 6, 0, 0.15);
+}
+
+.short-thumb {
+  aspect-ratio: 16 / 9;
+  background: #0d0d14;
+  position: relative;
+  overflow: hidden;
+}
+
+.short-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.short-card:hover .short-thumb img {
+  transform: scale(1.05);
+}
+
+.short-thumb .play-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.short-card:hover .play-icon {
+  opacity: 1;
+}
+
+.short-meta {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.short-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.short-tag {
+  font-size: 0.75rem;
+  color: var(--rb-red);
+  letter-spacing: 0.03em;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 2rem;
+}
+
+.site-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+/* ── Tiny utilities ────────────────────────────────────────── */
+.glow-text {
+  text-shadow: 0 0 12px rgba(225, 6, 0, 0.5);
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .parts-list {
+    grid-template-columns: 1fr;
+  }
+  .lore-card {
+    padding: 1.35rem 1.15rem;
+  }
+  .page {
+    padding: 1rem 0.9rem 3rem;
+  }
+}
+```
+
+### Minimal HTML structure to pair with it
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nose_Run — Playground</title>
+  <!-- paste the CSS above here or link it -->
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo">
+      <div class="logo-mark">N</div>
+      <div>
+        <div class="logo-text">Nose<span>_Run</span></div>
+        <div class="logo-sub">by Nawder</div>
+      </div>
+    </a>
+  </header>
+
+  <main class="page">
+    <!-- Hero video -->
+    <div class="hero-video">
+      <iframe
+        src="https://www.youtube.com/embed/aPWhMIUDq1Q?si=rw7g_pEtHPk6A4Od"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+
+    <!-- Lore card -->
+    <article class="lore-card">
+      <h2>RED BULL NOSE.RUN 2055</h2>
+      <p>
+        In the hybrid human/AI civ of 2055 the annual Red Bull event has evolved.
+        Autonomous drones are given one sacred task:
+        <strong>design <a href="#">an apparatus</a> that lets their noses run</strong>.
+      </p>
+      <p>
+        On the sidelines sit the sad ones — sleek carbon-fiber drones with no noses at all,
+        watching with unblinking lidar eyes. Meanwhile AiMcGyver is already in the scrap yard,
+        yanking parts from every decade between 1950 and 2055:
+      </p>
+      <ul class="parts-list">
+        <li>1958 toaster heating element</li>
+        <li>1973 Volkswagen beetle fuel pump</li>
+        <li>1999 Nokia 3310 vibrator motor</li>
+        <li>2012 GoPro waterproof case</li>
+        <li>2028 Starlink phased-array tile</li>
+        <li>2041 lab-grown cartilage sheet</li>
+        <li>2053 self-healing silicone mucus membrane</li>
+      </ul>
+      <p class="quote">
+        “If it ain’t dripping, it ain’t living.”
+        <cite>— AiMcGyver, mid-solder</cite>
+      </p>
+    </article>
+
+    <!-- Ready for shorts -->
+    <section class="shorts-section">
+      <h3 class="section-title">More from the Scrapyard</h3>
+      <div class="shorts-grid">
+        <!-- drop short cards here later -->
+        <!-- example placeholder:
+        <div class="short-card">
+          <div class="short-thumb">
+            <img src="..." alt="">
+            <div class="play-icon">▶</div>
+          </div>
+          <div class="short-meta">
+            <div class="short-title">Prototype Fail #47</div>
+            <div class="short-tag">AiMcGyver • 0:42</div>
+          </div>
+        </div>
+        -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    No ads. Just dripping entertainment. · Made with scrap by Nawder
+  </footer>
+
+</body>
+</html>
+```
+
+This gives you:
+- Dark atmospheric background with subtle red/cyan glow
+- Sticky minimal header
+- Strong video hero with red glow border
+- Properly styled lore card that still feels like the original
+- A ready-made responsive shorts grid for when you start dropping more clips
+- Mobile-friendly everything
+
+Want any tweaks (more glitch effects, different accent colors, vertical short cards, animated drip particles, etc.)? Just say the word and I’ll adjust the CSS.
